@@ -398,10 +398,10 @@ class _HomePageState extends State<HomePage> {
                                    InkWell(onTap: (){
                                      if(snapshot.data!.docs[index].get("tag")==0){
                                        snapshot.data!.docs[index].reference.update({"tag":1,"tag_T":"Normal"});
-                                     }
+                                     }else
                                      if(snapshot.data!.docs[index].get("tag")==1){
                                        snapshot.data!.docs[index].reference.update({"tag":2,"tag_T":"Park"});
-                                     }
+                                     }else
                                      if(snapshot.data!.docs[index].get("tag")==2){
                                        snapshot.data!.docs[index].reference.update({"tag":0,"tag_T":"Priority"});
                                      }
@@ -419,13 +419,13 @@ class _HomePageState extends State<HomePage> {
                                    InkWell(onTap: (){
 
                                      if(snapshot.data!.docs[index].get("status")==0){
-                                       snapshot.data!.docs[index].reference.update({"updated":DateTime.now().millisecondsSinceEpoch,"status":1,"tag_T":"On Progress"});
-                                     }
+                                       snapshot.data!.docs[index].reference.update({"updated":DateTime.now().millisecondsSinceEpoch,"status":1,"status_T":"On Progress"});
+                                     }else
                                      if(snapshot.data!.docs[index].get("status")==1){
-                                       snapshot.data!.docs[index].reference.update({"updated":DateTime.now().millisecondsSinceEpoch,"status":2,"tag_T":"Done"});
-                                     }
+                                       snapshot.data!.docs[index].reference.update({"updated":DateTime.now().millisecondsSinceEpoch,"status":2,"status_T":"Done"});
+                                     }else
                                      if(snapshot.data!.docs[index].get("status")==2){
-                                       snapshot.data!.docs[index].reference.update({"updated":DateTime.now().millisecondsSinceEpoch,"status":0,"tag_T":"Pending"});
+                                       snapshot.data!.docs[index].reference.update({"updated":DateTime.now().millisecondsSinceEpoch,"status":0,"status_T":"Pending"});
                                      }
 
 
