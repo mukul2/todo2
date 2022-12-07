@@ -376,77 +376,81 @@ class _HomePageState extends State<HomePage> {
                          children: [
                            Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,crossAxisAlignment: CrossAxisAlignment.center,
                              children: [
-                               Padding(
-                                 padding: const EdgeInsets.all(8.0),
-                                 child: Text(snapshot.data!.docs[index].get("title").toString().toUpperCase()),
+                               Container(width: MediaQuery.of(context).size.width -  350,
+                                 child: Padding(
+                                   padding: const EdgeInsets.all(8.0),
+                                   child: Text(snapshot.data!.docs[index].get("title").toString().toUpperCase()),
+                                 ),
                                ),
-                               Row(
-                                 children: [
+                               Container(width: 350,
+                                 child: Row(
+                                   children: [
 
-                                   IconButton(onPressed: (){
-                                     snapshot.data!.docs[index].reference.delete();
-                                   }, icon: Icon(Icons.delete)),
-                                   Padding(
-                                     padding: const EdgeInsets.all(8.0),
-                                     child: Container(decoration: BoxDecoration(border: Border.all(color: Colors.white),borderRadius: BorderRadius.circular(3)),child: Padding(
-                                       padding: const EdgeInsets.all(4.0),
-                                       child: Text(DateFormat('dd MMM hh mm a').format(DateTime.fromMillisecondsSinceEpoch(snapshot.data!.docs[index].get("time"))),
-
-                                         style: TextStyle(color: Colors.white),),
-                                     ),),
-                                   ),
-                                   InkWell(onTap: (){
-                                     if(snapshot.data!.docs[index].get("tag")==0){
-                                       snapshot.data!.docs[index].reference.update({"tag":1,"tag_T":"Normal"});
-                                     }else
-                                     if(snapshot.data!.docs[index].get("tag")==1){
-                                       snapshot.data!.docs[index].reference.update({"tag":2,"tag_T":"Park"});
-                                     }else
-                                     if(snapshot.data!.docs[index].get("tag")==2){
-                                       snapshot.data!.docs[index].reference.update({"tag":0,"tag_T":"Priority"});
-                                     }
-                                   },
-                                     child: Padding(
+                                     IconButton(onPressed: (){
+                                       snapshot.data!.docs[index].reference.delete();
+                                     }, icon: Icon(Icons.delete)),
+                                     Padding(
                                        padding: const EdgeInsets.all(8.0),
-                                       child: Container(decoration: BoxDecoration(color:snapshot.data!.docs[index].get("tag")==0?Colors.red:((snapshot.data!.docs[index].get("tag")==1?Colors.blue:Colors.grey)),
-                                        borderRadius: BorderRadius.circular(5)),child: Padding(
+                                       child: Container(decoration: BoxDecoration(border: Border.all(color: Colors.white),borderRadius: BorderRadius.circular(3)),child: Padding(
                                          padding: const EdgeInsets.all(4.0),
-                                         child: Text(snapshot.data!.docs[index].get("tag")==0?"Priority":(snapshot.data!.docs[index].get("tag")==1?"Normal":"Park"),
+                                         child: Text(DateFormat('dd MMM hh mm a').format(DateTime.fromMillisecondsSinceEpoch(snapshot.data!.docs[index].get("time"))),
+
                                            style: TextStyle(color: Colors.white),),
                                        ),),
                                      ),
-                                   ),
-                                   InkWell(onTap: (){
-
-                                     if(snapshot.data!.docs[index].get("status")==0){
-                                       snapshot.data!.docs[index].reference.update({"updated":DateTime.now().millisecondsSinceEpoch,"status":1,"status_T":"On Progress"});
-                                     }else
-                                     if(snapshot.data!.docs[index].get("status")==1){
-                                       snapshot.data!.docs[index].reference.update({"updated":DateTime.now().millisecondsSinceEpoch,"status":2,"status_T":"Done"});
-                                     }else
-                                     if(snapshot.data!.docs[index].get("status")==2){
-                                       snapshot.data!.docs[index].reference.update({"updated":DateTime.now().millisecondsSinceEpoch,"status":0,"status_T":"Pending"});
-                                     }
-
-
-                                   },
-                                     child: Padding(
-                                       padding: const EdgeInsets.all(8.0),
-                                       child: Container(decoration: BoxDecoration(color:snapshot.data!.docs[index].get("status")==0?Colors.red:
-                                       ((snapshot.data!.docs[index].get("status")==1?Colors.blue:Colors.grey)),
-                                           borderRadius: BorderRadius.circular(5)),child: Padding(
-                                         padding: const EdgeInsets.all(4.0),
-                                         child: Text(snapshot.data!.docs[index].get("status_T"),
-                                           style: TextStyle(color: Colors.white),),
-                                       ),),
+                                     InkWell(onTap: (){
+                                       if(snapshot.data!.docs[index].get("tag")==0){
+                                         snapshot.data!.docs[index].reference.update({"tag":1,"tag_T":"Normal"});
+                                       }else
+                                       if(snapshot.data!.docs[index].get("tag")==1){
+                                         snapshot.data!.docs[index].reference.update({"tag":2,"tag_T":"Park"});
+                                       }else
+                                       if(snapshot.data!.docs[index].get("tag")==2){
+                                         snapshot.data!.docs[index].reference.update({"tag":0,"tag_T":"Priority"});
+                                       }
+                                     },
+                                       child: Padding(
+                                         padding: const EdgeInsets.only(left: 3,right: 3,top: 5,bottom: 5),
+                                         child: Container(decoration: BoxDecoration(color:snapshot.data!.docs[index].get("tag")==0?Colors.red:((snapshot.data!.docs[index].get("tag")==1?Colors.blue:Colors.grey)),
+                                          borderRadius: BorderRadius.circular(5)),child: Padding(
+                                           padding: const EdgeInsets.all(4.0),
+                                           child: Text(snapshot.data!.docs[index].get("tag")==0?"Priority":(snapshot.data!.docs[index].get("tag")==1?"Normal":"Park"),
+                                             style: TextStyle(color: Colors.white),),
+                                         ),),
+                                       ),
                                      ),
-                                   ),
-                                 ],
+                                     InkWell(onTap: (){
+
+                                       if(snapshot.data!.docs[index].get("status")==0){
+                                         snapshot.data!.docs[index].reference.update({"updated":DateTime.now().millisecondsSinceEpoch,"status":1,"status_T":"On Progress"});
+                                       }else
+                                       if(snapshot.data!.docs[index].get("status")==1){
+                                         snapshot.data!.docs[index].reference.update({"updated":DateTime.now().millisecondsSinceEpoch,"status":2,"status_T":"Done"});
+                                       }else
+                                       if(snapshot.data!.docs[index].get("status")==2){
+                                         snapshot.data!.docs[index].reference.update({"updated":DateTime.now().millisecondsSinceEpoch,"status":0,"status_T":"Pending"});
+                                       }
+
+
+                                     },
+                                       child: Padding(
+                                         padding: const EdgeInsets.only(left: 3,right: 3,top: 5,bottom: 5),
+                                         child: Container(decoration: BoxDecoration(color:snapshot.data!.docs[index].get("status")==0?Colors.red:
+                                         ((snapshot.data!.docs[index].get("status")==1?Colors.blue:Colors.grey)),
+                                             borderRadius: BorderRadius.circular(5)),child: Padding(
+                                           padding: const EdgeInsets.all(4.0),
+                                           child: Text(snapshot.data!.docs[index].get("status_T"),
+                                             style: TextStyle(color: Colors.white),),
+                                         ),),
+                                       ),
+                                     ),
+                                   ],
+                                 ),
                                ),
                              ],
                            ),
                            Padding(
-                             padding: const EdgeInsets.only(left: 8,right: 8,bottom: 8),
+                             padding: const EdgeInsets.only(left: 3,right: 3,top: 5,bottom: 5),
                              child: Text(snapshot.data!.docs[index].get("description")),
                            ),
 
